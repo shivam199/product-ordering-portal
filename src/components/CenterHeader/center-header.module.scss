@@ -1,0 +1,29 @@
+@import "../../styles/colorStyles.module.scss";
+.main {
+    display: flex;
+    justify-content: space-between;
+}
+
+.emptyBox {
+    border: 1px solid $primaryColor;
+    border-radius: 5px;
+    margin: 0 10px;
+    width: 75px;
+}
+.searchSection {
+    display: flex;
+}
+.heading {
+    font-weight: 600;
+}
+.backArrow {
+    margin-right: 10px;
+    font-weight: 600;
+    position: relative;
+    bottom:2px;
+    cursor: pointer;
+}
+.searchWrapper {
+  width: 150px;
+  margin-right: 60px;
+}

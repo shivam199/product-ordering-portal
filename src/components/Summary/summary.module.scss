@@ -1,0 +1,13 @@
+@import '../../styles/colorStyles.module.scss';
+.main {
+    display: flex;
+    width: 100%;
+}
+.item1 {
+    flex: 2.3;
+    border-right: 2px dashed $primaryColor;
+    margin-right: 10px;
+} 
+.item2 {
+    flex: 2;
+}

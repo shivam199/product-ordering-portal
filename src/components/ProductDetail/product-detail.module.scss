@@ -1,0 +1,84 @@
+@import "../../styles/colorStyles.module.scss";
+.main {
+    position: relative;
+}
+.productContainer {
+    background-color: $primaryColor;
+    width: 80%;
+    height: 150px;
+    display: flex;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+.heart {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+.imageContainer {
+    overflow: hidden;
+    max-height: 130px;
+    max-width: 130px;
+    object-fit: cover;
+    & img {
+        width: 100%;
+        height: 100%;
+    }
+}
+.colorCode {
+    margin-top: 20px;
+    font-size: 12px;
+    color: gray;
+}
+.itemDescription {
+    font-weight: 500;
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+}
+.variantDesc {
+    color: gray;
+    font-size: 12px;
+    width: 90%;
+}
+.quantityTxt {
+    margin-top: 20px;
+    font-size: 14px;
+}
+.quantityInput {
+    margin-top: 10px;
+    width: 70%;
+    background-color: $primaryColor;
+    border: 1px solid $primaryColor;
+    height: 30px;
+    text-decoration: none;
+}
+.minimumOrder {
+    font-size: 12px;
+    color: $selectedBorderColor;
+    margin-top: 5px;
+}
+.urgentTxt {
+    font-size: 10px;
+    font-weight: 600;
+    margin-top: 20px;
+}
+.addBtn {
+    border: 1px solid $selectedBorderColor;
+    background-color: white;
+    width:60%;
+    margin: 40px 0px 10px 60px;
+    height: 30px;
+    border-radius: 5px;
+    color: $selectedBorderColor;
+    font-weight: 600;
+    cursor: pointer;
+}
+.heading {
+    font-weight: 600;
+    margin-bottom: 20px;
+}

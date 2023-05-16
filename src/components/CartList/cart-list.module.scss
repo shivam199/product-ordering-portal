@@ -1,0 +1,90 @@
+@import "../../styles/colorStyles.module.scss";
+.main {
+    padding-left: 20px;
+    width: 100%;
+    background-color: white;
+}
+.imgContainer {
+    border: 1px solid $primaryColor;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+    & img {
+        width: 25px;
+        height: 25px;
+    }
+    margin-right: 20px;
+}
+.productInfo {
+    display: flex;
+    flex-direction: column;
+}
+.outer {
+    display:  flex;
+    overflow: hidden;
+    cursor: pointer;
+}
+.tableHeading {
+    background-color: $primaryColor;
+    padding: 20px 10px;
+}
+.itemDescription {
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.saleDescription {
+    color: gray;
+    font-size: 12px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 70px;
+}
+.crossIcon {
+    color: red;
+}
+tr {
+    height: 40px;
+    margin: 10px 0px;
+    width: 100%;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 10px;
+}
+td {
+    text-align: center;
+    font-size: 12px;
+    font-weight: 600;
+}
+.handPointer {
+    cursor: pointer;
+}
+.headerBorder {
+    background-color: $primaryColor;
+    border-radius: 1px solid $primaryColor;
+    box-shadow: 5px;
+}
+.itemPadding {
+    padding: 5px 10px 5px 10px !important;
+}
+.seeAll {
+    color: $selectedBorderColor;
+    background-color: white;
+    margin: 0px auto;
+    text-align: center;
+    padding: 10px 0px 20px 0px;
+    font-weight: 600;
+    border-top: 2px dashed $primaryColor;
+    font-size: 12px;
+}
+.emptyCart {
+    text-align: center;
+}
+.edit {
+    color: $selectedBorderColor;
+    font-size: 12px;
+    cursor: pointer;
+}

@@ -1,0 +1,29 @@
+.main {
+    display: flex;
+    margin: 20px;
+}
+.col1 {
+    display: flex;
+    flex: 4;
+    flex-direction: column;
+}
+.col2 {
+    flex: 2;
+}
+.upperSection {
+    display: flex;
+    height: 100%;
+}
+.lowerSection {
+    height: 170px;
+    display: flex;
+    background-color: white;
+    margin-top: 20px;
+    border-radius: 10px;
+    padding: 0px 20px;
+}
+.item2 {
+    display: flex;
+    flex: 1;
+    height: 100%;
+}

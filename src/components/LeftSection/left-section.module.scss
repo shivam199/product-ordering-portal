@@ -1,0 +1,51 @@
+@import '../../styles/colorStyles.module.scss';
+.main {
+    width: 250px;
+    background-color: white;
+    margin-right: 20px;
+    border-radius: 10px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 30px 20px;
+    box-sizing: border-box;
+}
+.logo {
+    height: 50px;
+    width: 50px;
+    & img {
+        width: 100%;
+        height: 100%;
+    }
+    border: 1px solid $primaryColor;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 10px;
+}
+.logoSection {
+    display: flex;
+    align-items: center;
+}
+.name {
+    font-size: 10px;
+    font-weight: 600;
+}
+.items {
+    margin-top: 100px;
+}
+.itemWrapper {
+    display: flex;
+    padding: 10px;
+}
+.itemImage {
+    color: gray;
+    margin-right: 10px;
+}
+.itemTxt {
+    color: gray;
+}
+.active {
+    background-color: $selectedColor;
+    color: $selectedBorderColor;
+    border-radius: 5px;
+}

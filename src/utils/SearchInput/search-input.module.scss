@@ -1,0 +1,25 @@
+@import '../../styles/colorStyles.module.scss';
+.searchContainer {
+    position: relative;
+    width: inherit;
+  }
+  
+  .searchInput {
+    padding: 8px 30px 8px 8px;
+    border: 1px solid $primaryColor;
+    border-radius: 4px;
+    background-color: $primaryColor;
+    width: inherit;
+  }
+  
+  .searchIconContainer {
+    position: absolute;
+    top: 50%;
+    left: 8px;
+    transform: translateY(-50%);
+  }
+  
+  .searchIcon {
+    pointer-events: none;
+    color: gray;
+  }

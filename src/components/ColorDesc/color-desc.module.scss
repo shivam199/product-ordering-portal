@@ -1,0 +1,22 @@
+@import "../../styles/colorStyles.module.scss";
+.main {
+    display: flex;
+    flex-wrap: wrap;
+}
+.colorCard {
+    border: 1px solid $primaryColor;
+    padding: 10px 20px;
+    margin: 5px 10px 5px 0px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.heading {
+    margin-top: 30px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+.selectedColor {
+    background-color: $selectedColor;
+    border: 1px solid $selectedBorderColor;
+    color: $selectedBorderColor;
+}

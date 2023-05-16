@@ -1,0 +1,27 @@
+@import "../../styles/colorStyles.module.scss";
+.btnWrapper {
+    display: flex;
+    justify-content: center;
+}
+.cartBtn {
+    margin-top: 100px;
+    background-color: $selectedBorderColor;
+    color: white;
+    border-radius: 5px;
+    border: 1px solid $selectedBorderColor;
+    padding: 10px 60px;
+    cursor: pointer;
+}
+.disableBtn {
+    background-color: gray;
+    border: 1px solid gray;
+    opacity: 0.5;
+}
+.handPointer {
+    cursor: pointer;
+}
+.heading {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}

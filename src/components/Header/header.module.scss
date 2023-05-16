@@ -1,0 +1,77 @@
+@import '../../styles/colorStyles.module.scss';
+
+.main {
+    height: 70px;
+    width: 100%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.rightSection {
+    float: right;
+    display: flex;
+    align-items: center;
+}
+.leftSection {
+    display: flex;
+    align-items: center;
+}
+.logo {
+    height: 50px;
+    width: 50px;
+    & img {
+        width: 100%;
+        height: 100%;
+    }
+    margin-left: 50px;
+}
+.name {
+    font-size: 10px;
+    font-weight: 600;
+    margin-right: 150px;
+}
+.searchWrapper {
+    width: 400px;
+}
+.logoExt {
+    border: 1px solid $primaryColor;
+    border-radius: 50%;
+    overflow: hidden;
+    height:40px;
+    width:40px;
+    margin-right: 5px;
+}
+.downArrow {
+    color: gray;
+}
+.profileImage {
+    margin-left: 30px;
+    width: 30px;
+    height: 30px;
+    overflow: hidden;
+    border-radius: 50%;
+    & img {
+        width: 100%;
+        height: 100%;
+    }
+}
+.userSection {
+    margin-left: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-right: 5px;
+}
+.role {
+    font-size: 12px;
+    font-weight: 600;
+}
+.email {
+    color: gray;
+    font-size: 10px;
+}
+.dummy {
+    margin-right: 50px;
+}
+

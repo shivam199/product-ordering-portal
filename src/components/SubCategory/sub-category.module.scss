@@ -1,0 +1,42 @@
+@import "../../styles/colorStyles.module.scss";
+.main {
+    display: flex;
+    padding: 20px 10px;
+    flex-wrap: wrap;
+    overflow: auto;
+    gap: 20px
+}
+.categoryCard {
+    width: 130px;
+    height: 130px;
+    border-radius: 10px;
+    flex: 0 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    & img {
+        height: 80px;
+        width: 80px;
+    }
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+    border: 2px solid $primaryColor;
+}
+.categoryName {
+    position: absolute;
+    text-align: center;
+    bottom: 5px;
+    font-size: 14px;
+    left: 0;
+    right: 0;
+}
+.notFound {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.active {
+    border: 1px solid white;
+    outline: 2px solid red;
+}

@@ -1,0 +1,71 @@
+@import '../../styles/colorStyles.module.scss';
+.main {
+    background-color: white;
+    padding: 10px;
+}
+.purchaseHeading {
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+.purchaseNumber {
+    background-color: $primaryColor;
+    padding: 10px;
+    font-size: 12px;
+    margin-bottom: 20px;
+}
+.addressTxt {
+    font-size: 12px;
+    font-weight: 600;
+}
+.adddressWrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.view {
+    color: $selectedBorderColor;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.address {
+    color: gray;
+    font-size: 12px;
+    padding-bottom: 20px;
+    border-bottom: 2px dashed $primaryColor;
+}
+.amountSection {
+    display: flex;
+    justify-content: space-between;
+    color: gray;
+    margin: 10px 0px;
+    font-size: 12px;
+}
+.totalAmount {
+    border-top: 2px solid $primaryColor;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px;
+}
+.clearCart {
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: white;
+    width: 30%;
+    height: 30px;
+}
+.placeOrder {
+    border: 1px solid $selectedBorderColor;
+    border-radius: 5px;
+    background-color: $selectedBorderColor;
+    width: 30%;
+    height: 30px;
+    color: white;
+}
+.btnSection {
+    display: flex;
+    justify-content: space-around;
+}
