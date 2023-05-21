@@ -1,9 +1,23 @@
 import styles from "./cart-list.module.scss";
 import { MdModeEditOutline } from "react-icons/md";
 import useCartData from "../../context/CartContext";
+import { useEffect } from "react";
 
-const CartList = ({ homePage = false, setIsOpen, setOrderSelectedProduct }) => {
-  const {state, removeCartData} = useCartData();
+const CartList = ({
+  homePage = false,
+  setIsOpen,
+  setOrderSelectedProduct,
+  setOrderSelectedVariant,
+  setFromEdit,
+  fromEdit,
+}) => {
+  const { state, removeCartData } = useCartData();
+  useEffect(() => {
+    if (fromEdit && state?.length) {
+      setOrderSelectedProduct(state[0].product);
+      setOrderSelectedVariant(state[0].variant);
+    }
+  }, []);
   return (
     <>
       <table className={styles.main}>
@@ -15,7 +29,19 @@ const CartList = ({ homePage = false, setIsOpen, setOrderSelectedProduct }) => {
           <td>Products</td>
           <td>Quantity</td>
           <td>Price</td>
-          {homePage && state.length ? <td className={styles.edit} onClick={() =>setIsOpen(true)}><MdModeEditOutline /> Edit</td> : <td> </td>}{" "}
+          {homePage && state.length ? (
+            <td
+              className={styles.edit}
+              onClick={() => {
+                setIsOpen(true);
+                setFromEdit(true);
+              }}
+            >
+              <MdModeEditOutline /> Edit
+            </td>
+          ) : (
+            <td> </td>
+          )}{" "}
         </tr>
         {state.map((ele, i) => {
           if (i > 3 && homePage) {
@@ -27,7 +53,14 @@ const CartList = ({ homePage = false, setIsOpen, setOrderSelectedProduct }) => {
                 className={`${styles.outer} ${
                   homePage ? styles.itemPadding : ""
                 }`}
-                onClick={homePage ? () => {} : () => setOrderSelectedProduct(ele.product)}
+                onClick={
+                  homePage
+                    ? () => {}
+                    : () => {
+                        setOrderSelectedProduct(ele.product);
+                        setOrderSelectedVariant(ele.variant);
+                      }
+                }
               >
                 <div className={styles.imgContainer}>
                   <img
@@ -48,7 +81,10 @@ const CartList = ({ homePage = false, setIsOpen, setOrderSelectedProduct }) => {
                 </div>
               </td>
               <td>{ele.quantity}</td>
-              <td>{Number(ele.quantity) * Number(ele.variant.grossPrice)}</td>
+              <td>
+                {state[0].product.currency.symbol}{" "}
+                {Number(ele.quantity) * Number(ele.variant?.grossPrice)}
+              </td>
               {!homePage && (
                 <td
                   className={`${styles.crossIcon} ${styles.handPointer}`}
@@ -61,8 +97,18 @@ const CartList = ({ homePage = false, setIsOpen, setOrderSelectedProduct }) => {
           );
         })}
       </table>
-      {!state.length && !homePage ? <div className={styles.emptyCart}><p>your cart is empty</p></div> : ''}
-      {homePage && state.length > 4 ? <div className={styles.seeAll}>{`See all >`}</div> : ''}
+      {!state.length && !homePage ? (
+        <div className={styles.emptyCart}>
+          <p>your cart is empty</p>
+        </div>
+      ) : (
+        ""
+      )}
+      {homePage && state.length > 4 ? (
+        <div className={styles.seeAll}>{`See all >`}</div>
+      ) : (
+        ""
+      )}
     </>
   );
 };

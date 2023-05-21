@@ -14,6 +14,7 @@ const Outlet = () => {
   const [productList, SetProductList] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState();
   const [selectedSubCategory, setSubSelectedCategory] = useState();
+  const [fromEdit, setFromEdit] = useState(false);
   useEffect(() => {
     axios
       .get(
@@ -89,6 +90,8 @@ const Outlet = () => {
               onSubCategorySelect={onSubCategorySelect}
               selectedCategory={selectedCategory}
               selectedSubCategory={selectedSubCategory}
+              fromEdit={fromEdit}
+              setFromEdit={setFromEdit}
             />
           </div>
         </div>
@@ -103,7 +106,7 @@ const Outlet = () => {
       </div>
       <div className={styles.col2}>
         {" "}
-        <CartSection setIsOpen={setIsOpen} />
+        <CartSection setIsOpen={setIsOpen} setFromEdit={setFromEdit}/>
       </div>
     </div>
   );

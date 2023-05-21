@@ -3,10 +3,12 @@ import { AiOutlineHeart } from "react-icons/ai";
 import ColorCard from "../ColorDesc";
 import { useEffect, useState } from "react";
 import useCartData from "../../context/CartContext";
-import {toast} from 'react-hot-toast';
+import { toast } from "react-hot-toast";
 
-const ProductDetail = ({ product }) => {
-  const [selectedVariant, setSelectedVariant] = useState("");
+const ProductDetail = ({ product, orderSelectedVariant, fromEdit }) => {
+  const [selectedVariant, setSelectedVariant] = useState(
+    orderSelectedVariant || ""
+  );
   const [selectedVariantPackage, setSelectedVariantPackage] = useState("");
   const [selectedVariantColor, setSelectedVariantColor] = useState("");
   const [uniqueColorSet, setUniqueColorSet] = useState([]);
@@ -31,7 +33,12 @@ const ProductDetail = ({ product }) => {
       }
     });
     setPackageSet(packageDetails);
-    packageDetails[0] && setSelectedVariantPackage(packageDetails[0]);
+    if (
+      !selectedVariantPackage ||
+      !packageDetails.includes(selectedVariantPackage)
+    ) {
+      setSelectedVariantPackage(packageDetails[0]);
+    }
   }, [selectedVariantColor]);
 
   useEffect(() => {
@@ -44,11 +51,15 @@ const ProductDetail = ({ product }) => {
         return;
       }
     });
-  }, [selectedVariantColor, selectedVariantPackage]);
+  }, [selectedVariantColor, selectedVariantPackage, orderSelectedVariant]);
 
   const addVariant = () => {
-    if(quantity < 12 || quantity > 100 || !quantity) {
-      toast.error(quantity < 12 ?"please order quantity more than 12" : "please order quantity less than 100")
+    if (quantity < 12 || quantity > 100 || !quantity) {
+      toast.error(
+        quantity < 12
+          ? "please order quantity more than 12"
+          : "please order quantity less than 100"
+      );
       return;
     }
     let variant;
@@ -61,7 +72,18 @@ const ProductDetail = ({ product }) => {
         return;
       }
     });
-    updateCartData({product: product, quantity: Number(quantity), variant: {...variant, itemDescription: product.itemDescription, img: product?.productImages[0]}});
+    updateCartData(
+      {
+        product: product,
+        quantity: Number(quantity),
+        variant: {
+          ...variant,
+          itemDescription: product.itemDescription,
+          img: product?.productImages[0],
+        },
+      },
+      fromEdit
+    );
   };
 
   return (
@@ -80,16 +102,15 @@ const ProductDetail = ({ product }) => {
           />
         </div>
       </div>
-      <div className={styles.colorCode}>#{selectedVariant.colorCode}</div>
+      <div className={styles.colorCode}>{selectedVariant?.bpCatalogNumber}</div>
       <div className={styles.itemDescription}>
         <div>{product?.itemDescription}</div>
         <div>
-          {product.currency?.symbol} {selectedVariant.grossPrice}
+          {product.currency?.symbol} {selectedVariant?.grossPrice}
         </div>
       </div>
       <div className={styles.variantDesc}>
-        random description as per recorded video guidelines regarding variant
-        customer select based on color and package, few more random comment
+        {selectedVariant?.saleDescription}
       </div>
       <ColorCard
         heading={"Please Select Color Description"}
@@ -106,9 +127,15 @@ const ProductDetail = ({ product }) => {
         />
       )}
       <div className={styles.quantityTxt}>Enter Quantity</div>
-      <input type="number" name="quantity"  value ={quantity} className={styles.quantityInput} onChange={(e) => {
-        setQuantity(e.target.value);
-      }}/>
+      <input
+        type="number"
+        name="quantity"
+        value={quantity}
+        className={styles.quantityInput}
+        onChange={(e) => {
+          setQuantity(e.target.value);
+        }}
+      />
       <div className={styles.minimumOrder}>minimum orders 12*</div>
       <div style={{ marginTop: "20px" }}>
         <input

@@ -4,8 +4,15 @@ import OrderList from "../OrderList";
 import styles from "./summary.module.scss";
 import { useState } from "react";
 
-const Summary = ({ modalIsOpen, setIsOpen, product }) => {
+const Summary = ({
+  modalIsOpen,
+  setIsOpen,
+  product,
+  fromEdit,
+  setFromEdit,
+}) => {
   const [orderSelectedProduct, setOrderSelectedProduct] = useState();
+  const [orderSelectedVariant, setOrderSelectedVariant] = useState();
   const customStyles = {
     content: {
       top: "0%",
@@ -20,18 +27,31 @@ const Summary = ({ modalIsOpen, setIsOpen, product }) => {
     <Modal
       isOpen={modalIsOpen}
       // onAfterOpen={afterOpenModal}
-      onRequestClose={() => setIsOpen(false)}
+      onRequestClose={() => {
+        setIsOpen(false);
+        setFromEdit(false);
+      }}
       style={customStyles}
       aiaHideApp={false}
     >
       <div className={styles.main}>
         <div className={styles.item1}>
           {" "}
-          <ProductDetail product={orderSelectedProduct || product} />
+          <ProductDetail
+            product={orderSelectedProduct || product}
+            orderSelectedVariant={orderSelectedVariant}
+            fromEdit={fromEdit}
+          />
         </div>
         <div className={styles.item2}>
           {" "}
-          <OrderList setIsOpen={setIsOpen} setOrderSelectedProduct={setOrderSelectedProduct}/>
+          <OrderList
+            setIsOpen={setIsOpen}
+            setOrderSelectedProduct={setOrderSelectedProduct}
+            setOrderSelectedVariant={setOrderSelectedVariant}
+            fromEdit={fromEdit}
+            setFromEdit={setFromEdit}
+          />
         </div>
       </div>
     </Modal>

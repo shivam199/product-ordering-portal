@@ -37,7 +37,7 @@ const PriceDetail = ({state, clearCart}) => {
         amountSection.forEach((ele) => {
             amount=amount + ele.amount;
         })
-        return amount;
+        return Number(amount).toFixed(2);
     }
     return (
         <div className={styles.main}>
@@ -53,12 +53,12 @@ const PriceDetail = ({state, clearCart}) => {
             {amountSection.map((ele) => {
                 return  <div className={styles.amountSection}>
                 <div className={styles.amountTxt}>{ele.text}</div>
-                <div className={styles.amount}>{ele.amount}</div>
+                <div className={styles.amount}>{state[0].product.currency?.symbol} {ele.amount}</div>
             </div>
             })}
             <div className={styles.totalAmount}>
                 <div>Order total</div>
-                <div>{calculateTotalAmount()}</div>
+                <div>{state[0].product.currency?.symbol} {calculateTotalAmount()}</div>
             </div>
             <div className={styles.btnSection}>
                 <button className={styles.clearCart} onClick={clearCart}>Clear Cart</button>

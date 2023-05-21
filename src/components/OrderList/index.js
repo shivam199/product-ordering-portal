@@ -2,7 +2,7 @@ import useCartData from "../../context/CartContext";
 import styles from "./order-list.module.scss";
 import CartList from "../CartList";
 
-const OrderList = ({ setIsOpen, showCartBtn = true , setOrderSelectedProduct}) => {
+const OrderList = ({ setIsOpen, showCartBtn = true , setOrderSelectedProduct, setOrderSelectedVariant, fromEdit, setFromEdit}) => {
     const { state } = useCartData();
 
   return (
@@ -13,7 +13,7 @@ const OrderList = ({ setIsOpen, showCartBtn = true , setOrderSelectedProduct}) =
           x
         </div>
       </div>
-      <CartList setOrderSelectedProduct={setOrderSelectedProduct}/>
+      <CartList setOrderSelectedProduct={setOrderSelectedProduct} setOrderSelectedVariant={setOrderSelectedVariant} fromEdit={fromEdit}/>
       {showCartBtn && (
         <div className={styles.btnWrapper}>
           <button
@@ -21,6 +21,9 @@ const OrderList = ({ setIsOpen, showCartBtn = true , setOrderSelectedProduct}) =
             disabled={state?.length ? false : true}
             onClick={() => {
               setIsOpen(false)
+              if(setFromEdit) {
+                setFromEdit(false);
+              }
             }}
           >
             Add to cart

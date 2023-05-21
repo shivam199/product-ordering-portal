@@ -23,7 +23,7 @@ const Products = ({ productList, onProductClick }) => {
                 alt="img"
               />
             </div>
-            <div className={styles.itemDescription}>{product.itemDescription}</div>
+            <div className={styles.itemDescription}>{product?.itemDescription}</div>
             <div className={styles.description}>some random descript about the product</div>
           </div>
         );

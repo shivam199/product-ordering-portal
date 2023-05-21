@@ -19,12 +19,28 @@ export const CartContext = createContext(undefined);
 export const CartProvider = ({ children }) => {
 	const [state, dispatch] = useReducer(cartReducer, []);
 
-	const updateCartData = (data) => {
+	const updateCartData = (data, fromEdit=false) => {
 			const cartData = [...state];
+			if(fromEdit) {
+				cartData.forEach((ele, i) => {
+					console.log("fromEdit => ", fromEdit, state?.product?.itemNumber, data?.product?.itemNumber)
+					if(ele.product?.itemNumber === data.product?.itemNumber) {
+						console.log("inside loop")
+						cartData[i].quantity = Number(data.quantity);
+						cartData[i].product = data.product;
+						dispatch({
+							type: "UPDATE_DATA",
+							payload: cartData,
+						});
+						return;
+					}
+				});
+				return;
+			}
 			if(cartData.some(ele => ele.variant?._id === data.variant?._id)) {
 				cartData.forEach((ele, i) => {
 					if(ele.variant?._id === data.variant?._id) {
-						cartData[i].quantity = Number(cartData[i].quantity) + Number(data.quantity);
+						cartData[i].quantity = Number(data.quantity);
 						cartData[i].product = data.product;
 						dispatch({
 							type: "UPDATE_DATA",

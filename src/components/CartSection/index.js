@@ -3,11 +3,11 @@ import useCartData from "../../context/CartContext";
 import styles from "./cart-section.module.scss";
 import PriceDetail from "../PriceDetail";
 
-const CartSection = ({setIsOpen}) => {
-  const { state, removeCartData, clearCart } = useCartData();
+const CartSection = ({setIsOpen, setFromEdit}) => {
+  const { state, clearCart } = useCartData();
   return (
     <div className={styles.main}>
-      <CartList homePage={true} setIsOpen={setIsOpen}/>
+      <CartList homePage={true} setIsOpen={setIsOpen} setFromEdit={setFromEdit}/>
       {!state.length && (
         <div className={styles.emptyCart}>
           <img
