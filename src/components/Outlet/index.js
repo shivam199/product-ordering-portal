@@ -6,8 +6,11 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import SubCategory from "../SubCategory";
 import toast from "react-hot-toast";
+import { useWindowSize } from "../../hooks/useWindowSize";
+import FloatedLeftSection from "../FloatedLeftSection";
+import { AiFillHome } from "react-icons/ai";
 
-const Outlet = () => {
+const Outlet = ({onHamburgerClick, setOnHamburgerClick}) => {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [categories, setCategories] = useState([]);
   const [subCategories, setSubCategories] = useState([]);
@@ -15,6 +18,7 @@ const Outlet = () => {
   const [selectedCategory, setSelectedCategory] = useState();
   const [selectedSubCategory, setSubSelectedCategory] = useState();
   const [fromEdit, setFromEdit] = useState(false);
+  const {width: deviceWidth} = useWindowSize();
   useEffect(() => {
     axios
       .get(
@@ -73,10 +77,11 @@ const Outlet = () => {
     <div className={styles.main}>
       <div className={styles.col1}>
         <div className={styles.upperSection}>
-          <div className={styles.item1}>
+          {console.log("innerWidth", deviceWidth)}
+         {deviceWidth > 1024 ? <div className={styles.item1}>
             {" "}
             <LeftSection />
-          </div>
+          </div> : onHamburgerClick ? <FloatedLeftSection setIsOpen={() => setOnHamburgerClick(false)} modalIsOpen={onHamburgerClick}/> : ''}
           <div className={styles.item2}>
             {" "}
             <CenterSection
@@ -96,7 +101,10 @@ const Outlet = () => {
           </div>
         </div>
         {productList.length ? (
-          <div className={styles.lowerSection}>
+          <div className={styles.lowerSection}> 
+            <div className={styles.homeBtn} onClick={() => SetProductList([])}>
+                <AiFillHome size={100}/>
+            </div>
             <SubCategory subCategories={subCategories}
             onSubCategorySelect={onSubCategorySelect} selectedSubCategory={selectedSubCategory}/>
           </div>

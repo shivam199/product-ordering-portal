@@ -4,13 +4,16 @@ import Outlet from "./components/Outlet";
 import { CartProvider } from "./context/CartContext";
 import {Toaster} from 'react-hot-toast';
 import './global.css';
+import {useState} from 'react';
 
 function App() {
+  const [onHamburgerClick, setOnHamburgerClick] = useState(false);
+
   return (
     <div className={styles.main}>
-      <Header />
+      <Header onHamburgerClick={onHamburgerClick} setOnHamburgerClick={setOnHamburgerClick}/>
       <CartProvider>
-        <Outlet />
+        <Outlet onHamburgerClick={onHamburgerClick} setOnHamburgerClick={setOnHamburgerClick}/>
       </CartProvider>
       <Toaster />
     </div>

@@ -32,7 +32,7 @@
     margin-right: 150px;
 }
 .searchWrapper {
-    width: 400px;
+    width: 40vw;
 }
 .logoExt {
     border: 1px solid $primaryColor;
@@ -74,4 +74,17 @@
 .dummy {
     margin-right: 50px;
 }
-
+.hamBurger {
+    margin-left: 10px
+}
+@media only screen and (max-width: 1024px) {
+    .logo {
+        margin-left: 10px;
+    }
+    .name {
+        margin-right: 20px;
+    }
+    .searchWrapper {
+        width: 30vw;
+    }
+}

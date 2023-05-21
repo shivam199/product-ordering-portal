@@ -13,6 +13,7 @@
 .main {
     height: 85vh;
     margin-left: 20px;
+    width: 100%;
 }
 .instctn {
     display: flex;
@@ -26,4 +27,12 @@
     font-size: 12px;
     font-weight: 600;
     cursor: pointer;
+}
+.imgContainer {
+    object-fit: cover;
+    max-width: 200px;
+    & img {
+        width: 100%;
+        height: 100%;
+    }
 }

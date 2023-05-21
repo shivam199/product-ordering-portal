@@ -2,3 +2,6 @@ button:active {
     background-color: #aaa;
     color: white;
 }
+body {
+    box-sizing: border-box;
+}

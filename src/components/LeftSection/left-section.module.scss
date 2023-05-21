@@ -1,6 +1,5 @@
 @import '../../styles/colorStyles.module.scss';
 .main {
-    width: 250px;
     background-color: white;
     margin-right: 20px;
     border-radius: 10px;
@@ -31,7 +30,7 @@
     font-weight: 600;
 }
 .items {
-    margin-top: 100px;
+    margin-top: 50px;
 }
 .itemWrapper {
     display: flex;

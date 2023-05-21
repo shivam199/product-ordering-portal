@@ -2,11 +2,18 @@ import SearchInput from "../../utils/SearchInput";
 import styles from "./header.module.scss";
 import { useState } from "react";
 import { AiOutlineDown } from "react-icons/ai";
-const Header = () => {
+import HamburgerIcon from './HamburgerIcon'
+import { useWindowSize } from "../../hooks/useWindowSize";
+const Header = ({onHamburgerClick, setOnHamburgerClick}) => {
   const [searchTxt, setSearchTxt] = useState();
+  const {width: deviceWidth} = useWindowSize();
+
   return (
     <div className={styles.main}>
       <div className={styles.leftSection}>
+        {deviceWidth <= 1024 ?<div className={styles.hamBurger}>
+          <HamburgerIcon onClick={() => setOnHamburgerClick(!onHamburgerClick)}/>
+          </div> : ""}
       <div className={styles.logo}>
         <img
           src={

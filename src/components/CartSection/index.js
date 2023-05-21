@@ -10,12 +10,14 @@ const CartSection = ({setIsOpen, setFromEdit}) => {
       <CartList homePage={true} setIsOpen={setIsOpen} setFromEdit={setFromEdit}/>
       {!state.length && (
         <div className={styles.emptyCart}>
-          <img
-            src={
-              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRU4wROfQZBmNacyl9hsqgGINxrF4s46f6SV1xLKfQT1A&usqp=CAU&ec=48665701"
-            }
-            alt={"img"}
-          />
+          <div className={styles.imgContainer}>
+            <img
+              src={
+                "https://png.pngtree.com/element_our/png/20181031/shopping-cart-png_224349.jpg"
+              }
+              alt={"img"}
+            />
+          </div>
           <div>items not added yet</div>
         </div>
       )}

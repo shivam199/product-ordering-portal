@@ -32,7 +32,7 @@ const ProductDetail = ({ product, orderSelectedVariant, fromEdit }) => {
         packageDetails.push(element.packingDescription);
       }
     });
-    setPackageSet(packageDetails);
+    setPackageSet([...new Set(packageDetails)]);
     if (
       !selectedVariantPackage ||
       !packageDetails.includes(selectedVariantPackage)
@@ -133,7 +133,7 @@ const ProductDetail = ({ product, orderSelectedVariant, fromEdit }) => {
         value={quantity}
         className={styles.quantityInput}
         onChange={(e) => {
-          setQuantity(e.target.value);
+          setQuantity(Math.floor(Number(e.target.value)));
         }}
       />
       <div className={styles.minimumOrder}>minimum orders 12*</div>

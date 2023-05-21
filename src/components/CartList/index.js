@@ -1,7 +1,8 @@
 import styles from "./cart-list.module.scss";
 import { MdModeEditOutline } from "react-icons/md";
 import useCartData from "../../context/CartContext";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import ShowAllCartProduct from "../ShowAllCartProduct";
 
 const CartList = ({
   homePage = false,
@@ -12,6 +13,7 @@ const CartList = ({
   fromEdit,
 }) => {
   const { state, removeCartData } = useCartData();
+  const [showAllProduct, setShowAllProduct] = useState(false);
   useEffect(() => {
     if (fromEdit && state?.length) {
       setOrderSelectedProduct(state[0].product);
@@ -29,7 +31,7 @@ const CartList = ({
           <td>Products</td>
           <td>Quantity</td>
           <td>Price</td>
-          {homePage && state.length ? (
+          {homePage && state.length? (
             <td
               className={styles.edit}
               onClick={() => {
@@ -105,10 +107,13 @@ const CartList = ({
         ""
       )}
       {homePage && state.length > 4 ? (
-        <div className={styles.seeAll}>{`See all >`}</div>
+        <div className={styles.seeAll} onClick={() => setShowAllProduct(true)}>{`See all >`}</div>
       ) : (
         ""
       )}
+      {
+        showAllProduct ? <ShowAllCartProduct setIsOpen={() => setShowAllProduct(false)} modalIsOpen={showAllProduct}/> : ''
+      }
     </>
   );
 };
