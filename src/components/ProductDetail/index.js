@@ -90,13 +90,22 @@ const ProductDetail = ({ product, orderSelectedVariant, fromEdit }) => {
     <div className={styles.main}>
       <div className={styles.heading}>{product.itemDescription}</div>
       <div className={styles.productContainer}>
-        <AiOutlineHeart color="red" className={styles.heart} size={24} />
+        <AiOutlineHeart
+          color="red"
+          className={styles.heart}
+          size={24}
+          onClick={(e) => {
+            e.stopPropagation();
+            toast.success("coming soon ...");
+          }}
+        />
         <div className={styles.imageContainer}>
           <img
             src={
+              product?.productImages[0] ||
               `https://picsum.photos/seed/${Math.floor(
                 Math.random() * 1000 + 1
-              )}}/${200}/${200}` || product?.productImages[0]
+              )}}/${200}/${200}`
             }
             alt="img"
           />

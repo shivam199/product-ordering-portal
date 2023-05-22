@@ -23,9 +23,7 @@ export const CartProvider = ({ children }) => {
 			const cartData = [...state];
 			if(fromEdit) {
 				cartData.forEach((ele, i) => {
-					console.log("fromEdit => ", fromEdit, state?.product?.itemNumber, data?.product?.itemNumber)
 					if(ele.product?.itemNumber === data.product?.itemNumber) {
-						console.log("inside loop")
 						cartData[i].quantity = Number(data.quantity);
 						cartData[i].product = data.product;
 						dispatch({

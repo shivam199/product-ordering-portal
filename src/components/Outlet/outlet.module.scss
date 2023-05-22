@@ -17,7 +17,7 @@
     height: 100%;
 }
 .lowerSection {
-    height: 170px;
+    height: 100px;
     display: flex;
     background-color: white;
     margin-top: 20px;
@@ -35,21 +35,22 @@
 }
 .homeBtn {
     margin-top: 20px;
-    width: 130px;
-    height: 130px;
+    width: 80px;
+    height: 60px;
     border-radius: 10px;
     flex: 0 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
     & img {
-        height: 80px;
-        width: 80px;
+        height: 100%;
+        width: 100%;
     }
     overflow: hidden;
     cursor: pointer;
     position: relative;
     border: 2px solid $primaryColor;
+    margin-right: 20px;
 }
 .homeBtn:active {
     border: 1px solid $selectedBorderColor;
@@ -59,7 +60,7 @@
         width: 60%;
     }
     .col2 {
-        width: 40%;
+        width: 38%;
     }
     .main {
         margin: 10px;

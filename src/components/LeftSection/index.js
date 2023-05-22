@@ -2,6 +2,7 @@ import styles from "./left-section.module.scss";
 import { MdDashboard } from "react-icons/md";
 import { FaCubes, FaCube, FaHeart } from "react-icons/fa";
 import { AiFillPieChart } from "react-icons/ai";
+import { toast } from "react-hot-toast";
 
 const LeftSection = () => {
     const items = [
@@ -41,7 +42,13 @@ const LeftSection = () => {
       </div>
       <div className={styles.items}>
             {items.map((item, i) => {
-                return <div className={`${styles.itemWrapper} ${i === 1 ? styles.active : ''}`}>
+                return <div className={`${styles.itemWrapper} ${i === 1 ? styles.active : ''}`}  onClick={(e) => {
+                  if(i === 1) {
+                    return;
+                  }
+                  e.stopPropagation();
+                  toast.success("coming soon ...");
+                }}>
                     <div className={`${styles.itemImage} ${i === 1 ? styles.active : ''}`}>{item.img}</div>
                     <div className={`${styles.itemTxt} ${i === 1 ? styles.active : ''}`}>{item.txt}</div>
                 </div>

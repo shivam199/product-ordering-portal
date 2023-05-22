@@ -77,7 +77,6 @@ const Outlet = ({onHamburgerClick, setOnHamburgerClick}) => {
     <div className={styles.main}>
       <div className={styles.col1}>
         <div className={styles.upperSection}>
-          {console.log("innerWidth", deviceWidth)}
          {deviceWidth > 1024 ? <div className={styles.item1}>
             {" "}
             <LeftSection />
@@ -103,10 +102,10 @@ const Outlet = ({onHamburgerClick, setOnHamburgerClick}) => {
         {productList.length ? (
           <div className={styles.lowerSection}> 
             <div className={styles.homeBtn} onClick={() => SetProductList([])}>
-                <AiFillHome size={100}/>
+                <AiFillHome size={40}/>
             </div>
             <SubCategory subCategories={subCategories}
-            onSubCategorySelect={onSubCategorySelect} selectedSubCategory={selectedSubCategory}/>
+            onSubCategorySelect={onSubCategorySelect} selectedSubCategory={selectedSubCategory} cardSize={"medium"}/>
           </div>
         ) : (
           ""
